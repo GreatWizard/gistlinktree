@@ -1,0 +1,63 @@
+{
+  "name": "gistlinktree",
+  "description": "Generate a link tree from a configuration file.",
+  "version": "0.0.0",
+  "main": "index.js",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GreatWizard/gistlinktree.git"
+  },
+  "author": {
+    "name": "Guillaume Gérard",
+    "url": "https://guillaume.sh"
+  },
+  "bugs": {
+    "url": "https://github.com/GreatWizard/gistlinktree/issues"
+  },
+  "license": "AGPL-3.0-or-later",
+  "keywords": [
+    "gistlinktree",
+    "gist",
+    "linktree",
+    "link",
+    "tree",
+    "website",
+    "generator"
+  ],
+  "bin": {
+    "gistlinktree": "index.js"
+  },
+  "scripts": {
+    "lint": "eslint . --cache",
+    "lint:fix": "eslint . --fix",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "command-line-args": "^5.2.0",
+    "command-line-usage": "^6.1.1",
+    "dompurify": "^2.3.3",
+    "html-minifier-terser": "^6.1.0",
+    "joi": "^17.5.0",
+    "jsdom": "^18.1.1",
+    "marked": "^4.0.6",
+    "md5-file": "^5.0.0",
+    "milligram": "^1.4.1",
+    "normalize.css": "^8.0.1",
+    "sass": "^1.44.0",
+    "yaml": "^1.10.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.4.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.5.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

@@ -1,0 +1,73 @@
+@import 'normalize';
+@import 'milligram';
+
+$color-background: #fff !default;
+
+body {
+  background-color: $color-background;
+  padding: 24px 12px;
+}
+
+.header {
+  margin-top: 12px;
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: 3rem;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 96px;
+  height: 96px;
+}
+
+.center {
+  text-align: center;
+}
+
+.button {
+  &--link {
+    transition: color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s,
+      border-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s,
+      transform 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s,
+      background-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s;
+    max-width: 680px;
+    min-width: 340px;
+    width: 100%;
+    height: auto;
+    font-size: 1.5rem;
+
+    &:hover,
+    &:focus {
+      background-color: $color-initial;
+      border-color: $color-primary;
+      color: $color-primary;
+    }
+  }
+
+  &__text {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.links {
+  padding-bottom: 16px;
+}
+
+.socials {
+  padding-bottom: 16px;
+
+  a {
+    padding-bottom: 12px;
+    padding-left: 8px;
+    padding-right: 8px;
+    display: inline-block;
+
+    &:hover {
+      transform: scale(1.075);
+    }
+  }
+}
