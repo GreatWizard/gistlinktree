@@ -1,7 +1,7 @@
 {
   "name": "gistlinktree",
   "description": "Generate a link tree from a configuration file.",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "main": "index.js",
   "type": "module",
   "repository": {
