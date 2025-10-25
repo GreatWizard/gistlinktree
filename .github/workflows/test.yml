@@ -7,22 +7,22 @@ jobs:
     runs-on: ubuntu-latest
     name: Lint
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: "14"
-          cache: "yarn"
-      - run: yarn install
-      - run: yarn lint
+          node-version-file: package.json
+      - run: pnpm install
+      - run: pnpm lint
 
   test:
     runs-on: ubuntu-latest
     name: test
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: "14"
-          cache: "yarn"
-      - run: yarn install
-      - run: yarn start -h
+          node-version-file: package.json
+      - run: pnpm install
+      - run: pnpm start -h

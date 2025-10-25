@@ -18,8 +18,8 @@ const decorateHTML = function (content, options) {
           ? `${options.title} | ${options.mainTitle}`
           : options.title
         : options.mainTitle
-        ? options.mainTitle
-        : 'Home'
+          ? options.mainTitle
+          : 'Home'
     }</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
     <link rel="stylesheet" href="/${options.mainStyleSheet}">
@@ -45,6 +45,7 @@ const generateIndex = async function (index = [], linksSocial = [], options = {}
       )
       .join('')}
     </section>`
+
   return await minify(
     decorateHTML(
       `<header class="container center header">
@@ -52,8 +53,8 @@ const generateIndex = async function (index = [], linksSocial = [], options = {}
           options.avatar
             ? options.avatar
             : options.gravatar
-            ? `https://gravatar.com/avatar/${options.gravatar}?s=200`
-            : DEFAULT_AVATAR
+              ? `https://gravatar.com/avatar/${options.gravatar}?s=200`
+              : DEFAULT_AVATAR
         }" alt="Avatar" class="img avatar">
         ${options.mainTitle ? `<h1 class="title">${options.mainTitle}</h1>` : ''}
       </header>

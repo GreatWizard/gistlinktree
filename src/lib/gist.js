@@ -17,6 +17,7 @@ const getGist = function (id) {
         }
 
         let data = ''
+
         resp.on('data', (chunk) => {
           data += chunk
         })

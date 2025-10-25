@@ -1,16 +1,16 @@
 #!/usr/bin/env node
-import fs from 'fs'
-import fsPromises from 'fs/promises'
-import { dirname, basename, join } from 'path'
+import { basename, dirname, join } from 'path'
 import YAML from 'yaml'
 import commandLineArgs from 'command-line-args'
 import commandLineUsage from 'command-line-usage'
 import { fileURLToPath } from 'url'
+import fs from 'fs'
+import fsPromises from 'fs/promises'
 
-import { getGist } from './lib/gist.js'
-import { determineFormat, writeFile } from './lib/files.js'
-import { generateIndex } from './lib/html.js'
-import { configSchema } from './lib/schema.js'
+import { determineFormat, writeFile } from './src/lib/files.js'
+import { configSchema } from './src/lib/schema.js'
+import { generateIndex } from './src/lib/html.js'
+import { getGist } from './src/lib/gist.js'
 
 const optionList = [
   {
@@ -42,7 +42,7 @@ if (options.help) {
   console.log(
     commandLineUsage([
       {
-        content: `Gist🔗${new Date().getMonth() == 11 ? '🎄' : '🌲'}`,
+        content: `Gist🔗${new Date().getMonth() === 11 ? '🎄' : '🌲'}`,
       },
       {
         header: 'Options',
@@ -60,6 +60,7 @@ if (options.help) {
 
   const config = YAML.parse(await fsPromises.readFile(options.config, 'utf8'))
   let { error } = configSchema.validate(config, { abortEarly: false })
+
   if (error) {
     throw new Error(`Configuration file is invalid:${error.details.map((detail) => `\n  - ${detail.message}`)}`)
   }
@@ -70,29 +71,26 @@ if (options.help) {
 
   let theme = config?.theme
 
-  if (!theme || !fs.existsSync(join(__dirname, 'themes', `${theme}.scss`))) {
+  if (!theme || !fs.existsSync(join(__dirname, 'src', 'themes', `${theme}.scss`))) {
     theme = 'default'
   }
 
   const styleFilename = basename(
     await writeFile(join(options['output-dir'], 'style.css'), 'scss', {
-      file: join(__dirname, 'themes', `${theme}.scss`),
+      file: join(__dirname, 'src', 'themes', `${theme}.scss`),
       fingerprint: true,
-      includePaths: [
-        join(__dirname, 'node_modules', 'normalize.css'),
-        join(__dirname, 'node_modules', 'milligram', 'src'),
-        join(cwd, 'node_modules', 'normalize.css'),
-        join(cwd, 'node_modules', 'milligram', 'src'),
-      ],
+      includePaths: [join(__dirname, 'node_modules', 'normalize.css'), join(cwd, 'node_modules', 'normalize.css')],
     }),
   )
 
   let avatarFilename = undefined
+
   if (config?.avatar) {
     const avatarFormat = determineFormat(config.avatar)
+
     avatarFilename = basename(
       await writeFile(join(options['output-dir'], `avatar.${avatarFormat}`), avatarFormat, {
-        file: config.avatar,
+        file: join(cwd, config.avatar),
         fingerprint: true,
       }),
     )
@@ -107,6 +105,7 @@ if (options.help) {
         file: join(cwd, copy.input),
         fingerprint: isStyleSheet,
       })
+
       if (isStyleSheet) {
         styleSheets.push(basename(newFile))
       }
@@ -116,6 +115,7 @@ if (options.help) {
   for (let linkConfig of config?.links || []) {
     if (linkConfig.outputDir) {
       let outputDir = join(options['output-dir'], linkConfig.outputDir)
+
       if (!fs.existsSync(outputDir)) {
         await fsPromises.mkdir(outputDir, { recursive: true })
       }
@@ -128,7 +128,7 @@ if (options.help) {
 
       if (linkConfig.gistID) {
         let parsed = await getGist(linkConfig.gistID)
-        let options = {
+        let opts = {
           mainTitle: config?.title,
           title: parsed.description,
           favicon:
@@ -137,12 +137,14 @@ if (options.help) {
           mainStyleSheet: styleFilename,
         }
         let files = Object.values(parsed.files)
+
         for (let file of files) {
           await writeFile(join(outputDir, file.filename), determineFormat(file.filename), {
-            data: file['content'],
-            ...options,
+            data: file.content,
+            ...opts,
           })
         }
+
         index.push({
           title: parsed.description,
           url: linkConfig.outputDir,

@@ -1,0 +1,9 @@
+@use 'default' with (
+  $color-background: #282a36,
+  $color-initial: #f8f8f2,
+  $color-primary: #bd93f9,
+  $color-secondary: #8be9fd,
+  $color-tertiary: #50fa7b,
+  $color-quaternary: #ff79c6,
+  $color-quinary: #ffb86c
+);

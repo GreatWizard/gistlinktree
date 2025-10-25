@@ -1,13 +1,14 @@
+import * as sass from 'sass'
 import fsPromises from 'fs/promises'
-import { parse } from 'marked'
-import sass from 'sass'
 import md5File from 'md5-file'
+import { parse } from 'marked'
 
 import { decorateHTML } from './html.js'
 import minify from './minify.js'
 
 const determineFormat = function (filename) {
   const ext = filename.split('.').pop()
+
   switch (ext) {
     case 'md':
       return 'markdown'
@@ -23,6 +24,7 @@ const determineFormat = function (filename) {
 const writeFile = async function (filename, format, options = {}) {
   let _filename = filename
   let content = undefined
+
   switch (format) {
     case 'markdown':
       _filename = _filename.replace('.md', '.html')
@@ -32,27 +34,28 @@ const writeFile = async function (filename, format, options = {}) {
     case 'sass':
     case 'scss':
       _filename = _filename.replace('.sass', '.css').replace('.scss', '.css')
-      content = sass
-        .renderSync({
-          file: options.file,
-          data: options.data,
-          outputStyle: 'compressed',
-          includePaths: options.includePaths,
-        })
-        .css.toString()
+      content = sass.compile(options.file, {
+        style: 'compressed',
+        loadPaths: options.includePaths,
+      }).css
       break
   }
+
   if (options.fingerprint) {
     const hash = await md5File(options.file)
     const ext = _filename.split('.').pop()
+
     _filename = _filename.replace(`.${ext}`, `.${hash}.${ext}`)
   }
+
   if (content) {
     await fsPromises.writeFile(_filename, content)
   } else {
     await fsPromises.copyFile(options.file, _filename)
   }
+
   console.log(`File ${_filename} written successfully.`)
+
   return _filename
 }
 

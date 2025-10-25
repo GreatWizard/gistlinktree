@@ -6,11 +6,11 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/GreatWizard/gistlinktree.git"
+    "url": "git+https://github.com/GreatWizard/gistlinktree.git"
   },
   "author": {
     "name": "Guillaume Gérard",
-    "url": "https://guillaume.sh"
+    "url": "https://guillaume.gerard.pm"
   },
   "bugs": {
     "url": "https://github.com/GreatWizard/gistlinktree/issues"
@@ -34,30 +34,33 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "@fortawesome/free-brands-svg-icons": "^5.15.4",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "command-line-args": "^5.2.0",
-    "command-line-usage": "^6.1.1",
-    "dompurify": "^2.3.3",
-    "html-minifier-terser": "^6.1.0",
-    "joi": "^17.5.0",
-    "jsdom": "^18.1.1",
-    "marked": "^4.0.6",
+    "@fortawesome/free-brands-svg-icons": "^7.1.0",
+    "@fortawesome/free-solid-svg-icons": "^7.1.0",
+    "command-line-args": "^6.0.1",
+    "command-line-usage": "^7.0.3",
+    "dompurify": "^3.3.0",
+    "html-minifier-terser": "^7.2.0",
+    "joi": "^18.0.1",
+    "jsdom": "^27.0.1",
+    "marked": "^16.4.1",
     "md5-file": "^5.0.0",
-    "milligram": "^1.4.1",
     "normalize.css": "^8.0.1",
-    "sass": "^1.44.0",
-    "yaml": "^1.10.2"
+    "sass": "^1.93.2",
+    "yaml": "^2.8.1"
   },
   "devDependencies": {
-    "eslint": "^8.4.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "^2.5.1"
+    "eslint": "^9.38.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-config-stylelint": "^25.0.1",
+    "eslint-plugin-n": "^17.23.1",
+    "eslint-plugin-prettier": "^5.5.4",
+    "prettier": "3.6.2",
+    "stylelint": "^16.25.0",
+    "stylelint-config-standard-scss": "^16.0.0",
+    "stylelint-scss": "^6.12.1"
   },
+  "packageManager": "pnpm@10.18.2",
   "engines": {
-    "node": ">=14.0.0"
+    "node": "22"
   }
 }
