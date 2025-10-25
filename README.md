@@ -37,7 +37,7 @@ Define a `gistlinktree.yml` file as following:
 title: My Personal Link Tree # Main title of your page
 avatar: static/avatar.jpg # avatar used in priority over gravatar
 gravatar: <md5-hash-of-your-email-here> # load avatar from gravatar
-theme: dracula # theme of the stylesheet; values: default (by default), dracula
+theme: dracula # theme of the stylesheet; values: default, dracula, mitclan
 index:
   copy: # copy file at the root directory without changing the name
     - input: static/icons/favicon.ico
@@ -67,4 +67,4 @@ During the copy process or the build process of a gist, it converts:
 
 ### Social Links
 
-Only solid and brand icons coming from Font Awesome v5.15 are available: https://fontawesome.com/v5.15/icons?d=gallery&p=2&s=brands,solid&m=free
+Only solid and brand icons coming from Font Awesome v7.1 are available: https://fontawesome.com/v7.1/icons?d=gallery&p=2&s=brands,solid&m=free
