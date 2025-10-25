@@ -38,9 +38,6 @@ importers:
       md5-file:
         specifier: ^5.0.0
         version: 5.0.0
-      normalize.css:
-        specifier: ^8.0.1
-        version: 8.0.1
       sass:
         specifier: ^1.93.2
         version: 1.93.2
@@ -1019,9 +1016,6 @@ packages:
   normalize-path@3.0.0:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
     engines: {node: '>=0.10.0'}
-
-  normalize.css@8.0.1:
-    resolution: {integrity: sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==}
 
   optionator@0.9.4:
     resolution: {integrity: sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g==}
@@ -2336,8 +2330,6 @@ snapshots:
     optional: true
 
   normalize-path@3.0.0: {}
-
-  normalize.css@8.0.1: {}
 
   optionator@0.9.4:
     dependencies:

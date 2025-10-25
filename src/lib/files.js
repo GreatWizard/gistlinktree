@@ -36,7 +36,7 @@ const writeFile = async function (filename, format, options = {}) {
       _filename = _filename.replace('.sass', '.css').replace('.scss', '.css')
       content = sass.compile(options.file, {
         style: 'compressed',
-        loadPaths: options.includePaths,
+        loadPaths: options.loadPaths,
       }).css
       break
   }

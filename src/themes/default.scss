@@ -18,7 +18,6 @@ $color-quinary: #e1e1e1 !default;
     $color-quinary: $color-quinary
   );
 
-
 html {
   background-color: $color-background;
   padding: 24px 12px;
@@ -45,7 +44,8 @@ html {
 
 .button {
   &--link {
-    transition: color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s,
+    transition:
+      color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s,
       border-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s,
       transform 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s,
       background-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s;
